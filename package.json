@@ -11,10 +11,10 @@
     "build:watch": "rollup -c -w",
     "updateLink": "npm run build:clean && npm run build && cd dist && npm link",
     "lint": "eslint './src/**/*.ts'",
-    "test": "jest --coverage",
-    "test:watch": "jest --watchAll",
+    "test": "set \"NODE_OPTIONS=--experimental-vm-modules\" && jest --coverage",
+    "test:watch": "set \"NODE_OPTIONS=--experimental-vm-modules\" && jest --watchAll",
     "size": "size-limit",
-    "finish": "jest --coverage && npm run lint && npm run types",
+    "finish": "set \"NODE_OPTIONS=--experimental-vm-modules\" &&  jest --coverage && npm run lint && npm run types",
     "prepare": "husky install"
   },
   "repository": {
