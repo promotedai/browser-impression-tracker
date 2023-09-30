@@ -29,7 +29,7 @@ interface TrackerElementState {
 /**
  * ImpressionTracker implementation.  Uses IntersectionObserver, Timers and
  * `logImpressionForElement` to determine when to call the callback `logImpression`.
- * 
+ *
  * This implementation supports observing multiple elements with a single tracker.
  */
 export class ImpressionTrackerImpl implements ImpressionTracker {

@@ -10,7 +10,7 @@ export type ImpressionSourceTypeString = 'UNKNOWN_IMPRESSION_SOURCE_TYPE' | 'DEL
 
 /** This is a small version of the impression log record. */
 export interface Impression {
-   userInfo?: {
+  userInfo?: {
     // Anonymous user ID.
     anonUserId?: string;
     // Authenticated user ID.
@@ -18,7 +18,7 @@ export interface Impression {
     isInternalUser?: boolean;
   };
   // The ID for the Insertion (indicates a specific instance of Content in a response).
-  // This is returned from Delivery SDK.  Passing this through the browser improves the join quality.  
+  // This is returned from Delivery SDK.  Passing this through the browser improves the join quality.
   insertionId?: string;
   // The ID for the content, item, listing, etc.
   contentId?: string;
@@ -56,7 +56,7 @@ export interface ImpressionTracker {
   /**
    * Observes an element for impression tracking.  This is a wrapper around
    * `IntersectionObserver.observe` with some extra logic.
-   * 
+   *
    * @param element The HTML element.
    * @param contentId The ID for the content, item, listing, etc.
    * @param insertionId The ID for the Insertion (indicates a specific instance of Content in a
@@ -66,7 +66,7 @@ export interface ImpressionTracker {
   observe(element: Element, contentId: string, insertionId?: string): void;
   /**
    * Logs impression if not already logged.  This can be used to get the impression ID.
-   * 
+   *
    * @param element The HTML element.
    * @returns the Impression ID if tracked.  Otherwise undefined.
    */
