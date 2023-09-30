@@ -1,5 +1,6 @@
 module.exports = {
   preset: 'ts-jest',
+  testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'js'],
   transformIgnorePatterns: ['/node_modules/'],
   moduleNameMapper: {
