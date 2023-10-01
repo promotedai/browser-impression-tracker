@@ -7,11 +7,9 @@ import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
 
-const peerDependencies = pkg.peerDependencies;
-
 export default [
   {
-    input: 'src/index.tsx',
+    input: 'src/index.ts',
     plugins: [
       external(),
       del({ targets: 'dist/*' }),
@@ -35,7 +33,6 @@ export default [
           typings: `index.d.ts`,
           scripts: undefined,
           devDependencies: {},
-          peerDependencies,
           config: undefined,
         }),
       }),
@@ -46,17 +43,11 @@ export default [
         name: pkg.name,
         file: `dist/${pkg.name}.umd.js`,
         format: 'umd',
-        globals: {
-          uuid: 'uuid',
-        },
         sourcemap: true,
       },
       {
         file: `dist/${pkg.name}.esm.js`,
-        format: 'es', sourcemap: true,
-        globals: {
-          uuid: 'uuid',
-        },
+        format: 'es', sourcemap: true
       },
     ],
   },
