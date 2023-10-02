@@ -32,27 +32,50 @@ This example also uses the [promoted-snowplow-logger](https://github.com/promote
     uuid: uuidv4(),
   });
 
-  const navigate = (contentId: string, insertionId: string, impressionId: string) => {
+  // HTML5.
+  const observer = new MutationObserver((mutationsList) => {
+    for(let mutation of mutationsList) {
+      if (mutation.addedNodes.length) {
+        mutation.addedNodes.forEach(node => {
+          if (node instanceof Element) {
+            if (node.dataset.contentId) {
+              impressionTracker.observe(node, contentId, node.dataset.insertionId);
+            }
+          }
+        });
+        mutation.removedNodes.forEach(node => {
+          if (node.dataset.contentId) {
+            impressionTracker.unobserve(node);
+          }
+        });
+      }
+    }
+  });
+
+  const navigate = (node: Element) => {
+    const {
+      contentId,
+      insertionId
+    } = node.dataset;
+    // Will log an impression if one is not already logged.
+    // It returns the impressionId for passing back on action log records.
+    const impressionId = impressionTracker.logImpressionForElement(this);
     const targetUrl = 'https://www.example.com/listing=' + contentId;
     eventLogger.logClick({
       impressionId,
       insertionId,
       contentId,
     });
-
-    // E.g. 
     window.location.href = targetUrl;
-  } 
+  }
 </script>
 
 <div>
-
-  <!-- `logImpressionForElement` will log an impression if one is not already logged.
-        It returns the impressionId for passing back on action log records. -->
-  <div onload="impressionTracker.observe(this, 'content123', 'insertion123')" onclick="navigate('content123', 'insertion123', impressionTracker.logImpressionForElement(this))">
+  <div data-content-id="content123" data-insertion-id="insertion123" onclick="navigate(this)">
     Listing 123.
   </div>
 </div>
+
 ```
 
 The IntersectionObserver seems to work better with `<div>`s.  This library uses polyfill for pre-HTML5 browsers.
