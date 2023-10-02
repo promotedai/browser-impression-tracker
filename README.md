@@ -32,7 +32,7 @@ This example also uses the [promoted-snowplow-logger](https://github.com/promote
     uuid: uuidv4(),
   });
 
-  // HTML5.
+  // HTML5.  Works in most modern browsers.
   const observer = new MutationObserver((mutationsList) => {
     for(let mutation of mutationsList) {
       if (mutation.addedNodes.length) {
