@@ -65,6 +65,7 @@ This example also uses the [promoted-snowplow-logger](https://github.com/promote
       impressionId,
       insertionId,
       contentId,
+      targetUrl,
     });
     window.location.href = targetUrl;
   }
