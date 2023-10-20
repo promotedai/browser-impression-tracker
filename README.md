@@ -37,7 +37,6 @@ This example also uses the [promoted-snowplow-logger](https://github.com/promote
     for(let mutation of mutationsList) {
       if (mutation.addedNodes.length) {
         mutation.addedNodes.forEach(node => {
-          // shouldTrack = your method to filter elements to ones that should have impression tracking.
           if (node instanceof HTMLElement && node.classList.contains("impression")) {
             impressionTracker.observe(node, node.dataset.contentId, node.dataset.insertionId);
           }
