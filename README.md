@@ -37,14 +37,13 @@ This example also uses the [promoted-snowplow-logger](https://github.com/promote
     for(let mutation of mutationsList) {
       if (mutation.addedNodes.length) {
         mutation.addedNodes.forEach(node => {
-          if (node instanceof Element) {
-            if (node.dataset.contentId) {
-              impressionTracker.observe(node, contentId, node.dataset.insertionId);
-            }
+          // shouldTrack = your method to filter elements to ones that should have impression tracking.
+          if (node instanceof HTMLElement && node.classList.contains("impression")) {
+            impressionTracker.observe(node, node.dataset.contentId, node.dataset.insertionId);
           }
         });
         mutation.removedNodes.forEach(node => {
-          if (node.dataset.contentId) {
+          if (node instanceof HTMLElement && node.classList.contains("impression")) {
             impressionTracker.unobserve(node);
           }
         });
@@ -59,7 +58,7 @@ This example also uses the [promoted-snowplow-logger](https://github.com/promote
     } = node.dataset;
     // Will log an impression if one is not already logged.
     // It returns the impressionId for passing back on action log records.
-    const impressionId = impressionTracker.logImpressionForElement(this);
+    const impressionId = impressionTracker.logImpressionForElement(node);
     const targetUrl = 'https://www.example.com/listing=' + contentId;
     eventLogger.logClick({
       impressionId,
@@ -72,7 +71,7 @@ This example also uses the [promoted-snowplow-logger](https://github.com/promote
 </script>
 
 <div>
-  <div data-content-id="content123" data-insertion-id="insertion123" onclick="navigate(this)">
+  <div class="impression" data-content-id="content123" data-insertion-id="insertion123" onclick="navigate(this)">
     Listing 123.
   </div>
 </div>
