@@ -1,12 +1,12 @@
 [
   {
-    "path": "dist/impression-tracker.esm.js",
-    "limit": "1 KB",
+    "path": "dist/browser-impression-tracker.esm.js",
+    "limit": "4 KB",
     "webpack": false
   },
   {
-    "path": "dist/impression-tracker.umd.js",
-    "limit": "1 KB",
+    "path": "dist/browser-impression-tracker.umd.js",
+    "limit": "4 KB",
     "webpack": false
   }
 ]
