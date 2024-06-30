@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/promotedai/browser-impression-tracker/compare/v1.1.1...v1.2.0) (2024-06-30)
+
+
+### Features
+
+* update dependencies ([#20](https://github.com/promotedai/browser-impression-tracker/issues/20)) ([157c5dc](https://github.com/promotedai/browser-impression-tracker/commit/157c5dc91a7af085ee4825bc5d1a13457db284d9))
+
 ## [1.1.1](https://github.com/promotedai/browser-impression-tracker/compare/v1.1.0...v1.1.1) (2024-06-28)
 
 
