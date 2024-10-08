@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/promotedai/browser-impression-tracker/compare/v1.3.1...v1.3.2) (2024-10-08)
+
+
+### Bug Fixes
+
+* more deps ([#102](https://github.com/promotedai/browser-impression-tracker/issues/102)) ([9ce8e2e](https://github.com/promotedai/browser-impression-tracker/commit/9ce8e2e0be23cebf88eac3f2fc5aea4971c77997))
+
 ## [1.3.1](https://github.com/promotedai/browser-impression-tracker/compare/v1.3.0...v1.3.1) (2024-10-07)
 
 
